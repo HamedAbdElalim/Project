@@ -1,0 +1,88 @@
+﻿@model Project01.ViewModels.InstructorDepartmentCourseViewMode
+@{
+    ViewData["Title"] = "New";
+}
+
+<h1>New</h1>
+
+<form action="/Instructor/SaveNew" method="post">
+	<input type="hidden" name="Id" id="Id" value="@Model?.Id" />
+    <div>
+        <label>Name</label>
+        <input type="text" name="Name" id="Name" value="@Model?.Name" class="form form-control" />
+    </div>
+    <div>
+        <label>ImageURL</label>
+        <input type="text" name="ImageURL" id="ImageURL" value="@Model?.ImageURL" class="form form-control" />
+    </div>
+	<div>
+		<label>Salary</label>
+		<input type="text" name="Salary" id="Salary" value="@Model?.Salary" class="form form-control" />
+	</div>
+	<div>
+		<label>Address</label>
+		<input type="text" name="Address" id="Address" value="@Model?.Address" class="form form-control" />
+	</div>
+	@* <div> *@
+	@* 	<label>Department Id</label> *@
+	@* 	<input type="text" name="DepartmentId" id="DepartmentId" value="@Model?.DepartmentId" class="form form-control" /> *@
+	@* </div> *@
+	@* <div> *@
+	@* 	<label>Course Id</label> *@
+	@* 	<input type="text" name="CourseId" id="CourseId" value="@Model?.CourseId" class="form form-control" /> *@
+	@* </div> *@
+    @* <div> *@
+    @*     <label>ImageURL</label> *@
+    @*     <input type="text" name="ImageURL" id="ImageURL" value="@Model?.ImageURL" class="form form-control" /> *@
+    @* </div> *@
+    @* <div> *@
+    @*     <label>ImageURL</label> *@
+    @*     <input type="text" name="ImageURL" id="ImageURL" value="@Model?.ImageURL" class="form form-control" /> *@
+    @* </div> *@
+    @* <div> *@
+    @*     <label>ImageURL</label> *@
+    @*     <input type="text" name="ImageURL" id="ImageURL" value="@Model?.ImageURL" class="form form-control" /> *@
+    @* </div> *@
+    @* <div> *@
+    @*     <label>ImageURL</label> *@
+    @*     <input type="text" name="ImageURL" id="ImageURL" value="@Model?.ImageURL" class="form form-control" /> *@
+    @* </div> *@
+	<div>
+		<label>Departmets</label>
+		<select name="DepartmentId" id="DepartmentId" class="form form-control">
+			@foreach (var item in Model.DeptList)
+			{
+				if (item.Id == Model.DepartmentId)
+				{
+					<option value="@item.Id" selected>@item.Name</option>
+				}
+				else
+				{
+					<option value="@item.Id">@item.Name</option>
+				}
+
+			}
+		</select>
+	</div>
+	<div>
+		<label>Courses</label>
+		<select name="CourseId" id="CourseId" class="form form-control">
+			@foreach (var item in Model.CourseList)
+			{
+
+				if (item.Id == Model.CourseId)
+				{
+					<option value="@item.Id" selected>@item.Name</option>
+				}
+				else
+				{
+					<option value="@item.Id">@item.Name</option>
+				}
+			}
+		</select>
+	</div>
+
+    <input type="submit" value="Create" class="btn btn-success" />
+</form>
+
+<a href="/Instructor/ShowAll">back To List</a>

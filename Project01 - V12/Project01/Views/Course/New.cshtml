@@ -1,0 +1,67 @@
+﻿@model Project01.Models.Course
+@{
+    ViewData["Title"] = "New";
+	// SelectList deptOptions = (SelectList)ViewBag.Departments;
+	SelectList deptOptions = new SelectList(ViewBag.deptList, "Id", "Name");
+}
+
+<h1>New</h1>
+
+<form asp-action="SaveNew" asp-controller="Course" method="post" >
+	<div class="form-group" asp-validation-summary="All"></div>
+	<div class="form-group">
+		<label asp-for="Name" class="control-label"></label>
+		<input asp-for="Name" class="form-control" />
+		<span asp-validation-for="Name" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Degree" class="control-label"></label>
+		<input asp-for="Degree" class="form-control" />
+		<span asp-validation-for="Degree" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="MinDegree" class="control-label"></label>
+		<input asp-for="MinDegree" class="form-control" />
+		<span asp-validation-for="MinDegree" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Hours" class="control-label"></label>
+		<input asp-for="Hours" class="form-control" />
+		<span asp-validation-for="Hours" class="text-danger"></span>
+	</div>
+	@* <div class="form-group"> *@
+	@* 	<label asp-for="DepartmentId" class="control-label"></label> *@
+	@* 	<input asp-for="DepartmentId" class="form-control" /> *@
+	@* 	<span asp-validation-for="DepartmentId" class="text-danger"></span> *@
+	@* </div> *@
+	<div class="form-group">
+		<label asp-for="DepartmentId" class="control-label"></label>
+		@* <input asp-for="DepartmentId" class="form-control" /> *@
+		<select asp-for="DepartmentId" class="form-control" asp-items="deptOptions">
+			<option value="0">--Select Department--</option>
+		</select>
+	</div>
+	<div class="form-group">
+		<input type="submit" value="Create" class="btn btn-primary" />
+	</div>
+	
+
+	
+</form>
+
+<a asp-action="ShowAll" asp-controller="Course" class="btn btn-info">Back to List</a>
+
+<script src="f:\iti\16-mvc\lec06\lab 06\project01 - v11\project01\wwwroot\lib\jquery\dist\jquery.min.js"></script>
+<script src="f:\iti\16-mvc\lec06\lab 06\project01 - v11\project01\wwwroot\lib\jquery\dist\jquery.js"></script>
+<script src="f:\iti\16-mvc\lec06\lab 06\project01 - v11\project01\wwwroot\lib\jquery-validation\dist\jquery.validate.min.js"></script>
+<script src="f:\iti\16-mvc\lec06\lab 06\project01 - v11\project01\wwwroot\lib\jquery-validation\dist\jquery.validate.js"></script>
+<script src="f:\iti\16-mvc\lec06\lab 06\project01 - v11\project01\wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js"></script>
+
+
+@section MyScripts {
+	
+		
+	<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+	<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+	
+}

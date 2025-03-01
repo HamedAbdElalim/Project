@@ -1,0 +1,81 @@
+﻿@model PaginatedList<Course>
+@{
+    ViewData["Title"] = "ShowAll";
+}
+
+<h1>ShowAll</h1>
+
+<a href="/Course/New" class="btn btn-info">Add Course</a>
+<form asp-controller="Course" asp-action="ShowAll"  method="get">
+    <div class="form-group">
+        <input type="text" name="SearchName" id="SearchName" class="form-control" placeholder="Search" />
+        @* <input asp-for="@Model.Items.FirstOrD" class="form-control" placeholder="Search" /> *@
+    <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+</form>
+<table class="table table-hover table-bordered">
+    <tr>
+        <td>Id</td>
+        <td>Name</td>
+        <td>Degree</td>
+        <td>MinDegree</td>
+        <td>Hours</td>
+        <td>Department Id</td>
+       
+    </tr>
+    @foreach (var course in Model.Items)
+    {
+        <tr>
+            <td>@course.Id</td>
+            <td>@course.Name</td>
+
+            <td>@course.Degree</td>
+            <td>@course.MinDegree</td>
+            <td>@course.Hours</td>
+            <td>@course.DepartmentId</td>
+            <td>
+                <a asp-controller="course"
+                   asp-action="ShowInstructorsById"
+                   asp-route-id="@course.Id"
+                   class="btn btn-primary">go to Course</a>
+            </td>
+        </tr>
+    }
+</table>
+
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+        @if (Model.HasPreviousPage)
+        {
+            <li class="page-item">
+                <a class="page-link" href="/Course/ShowAll?page=@(Model.PageIndex - 1)">Previous</a>
+            </li>
+        }
+        else
+        {
+            <li class="page-item disabled">
+                <span class="page-link">Previous</span>
+            </li>
+        }
+
+        @for (var i = 1; i <= Model.TotalPages; i++)
+        {
+            <li class="page-item @(i == Model.PageIndex ? "active" : "")">
+                <a class="page-link" href="/Course/ShowAll?page=@i">@i</a>
+            </li>
+        }
+
+        @if (Model.HasNextPage)
+        {
+            <li class="page-item">
+                <a class="page-link" href="/Course/ShowAll?page=@(Model.PageIndex + 1)">Next</a>
+            </li>
+        }
+        else
+        {
+            <li class="page-item disabled">
+                <span class="page-link">Next</span>
+            </li>
+        }
+    </ul>
+</nav>

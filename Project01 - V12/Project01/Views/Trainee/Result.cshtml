@@ -1,0 +1,32 @@
+﻿@model Project01.ViewModels.TraineeCourseResultViewModel // This is the model for this view
+@{
+    ViewData["Title"] = "Result";
+}
+
+@* <h1>Result</h1> *@
+@* <h2>@Model.TraineeName</h2> *@
+@* <h2>@Model.CourseName</h2> *@
+@* <h2>@Model.TraineeGrade</h2> *@
+@* <h2>@Model.Status</h2> *@
+@* <h2>@Model.Color</h2> *@
+
+
+
+<div style="background-color:@Model.Color">
+
+    <div class="card" style="width:300px">
+        <img class="card-img-top" src="/Images/person.png" alt="Card image">
+        <div class="card-body">
+            <h4 class="card-title">TraineeName: @Model.TraineeName</h4>
+            <p class="card-text">CourseName: @Model.CourseName</p>
+            <p class="card-text">TraineeGrade @Model.TraineeGrade</p>
+            <p class="card-text">Status @Model.Status</p>
+            <a asp-controller="home" asp-action="Index" class="btn btn-light">Back To List</a>
+
+            @* <a href="" class="btn btn-primary">See Profile</a> *@
+            @* <a asp-controller="Product" asp-action="AllProducts" class="btn btn-primary">Back to All Products</a> *@
+            @* <a href="@Url.Action("AllProducts", "Product")" class="btn btn-primary">Back to All Products</a> *@
+            @* <a href="/Instructor/ShowAll" class="btn btn-primary">Back to All Instructor </a> *@
+        </div>
+    </div>
+</div>
